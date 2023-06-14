@@ -1,47 +1,15 @@
 language: python
 sudo: false
-dist: xenial
+dist: jammy
 jobs:
   fast_finish: true
   include:
-  - python: 3.7
-    env: TOXENV=py37-flake8
-  - python: 3.7
-    env: TOXENV=py37-docs
-  - python: 3.7
-    env: TOXENV=py37-mypy
-  - python: 3.5
-    env: TOXENV=py35-django2-drf3.8
-  - python: 3.5
-    env: TOXENV=py35-django2-drf3.9
-  - python: 3.5
-    env: TOXENV=py35-django2-drf3.10
-  - python: 3.5
-    env: TOXENV=py35-django2-drf3.11
-  - python: 3.6
-    env: TOXENV=py36-django2-drf3.8
-  - python: 3.6
-    env: TOXENV=py36-django2-drf3.9
-  - python: 3.6
-    env: TOXENV=py36-django2-drf3.10
-  - python: 3.6
-    env: TOXENV=py36-django2-drf3.11
-  - python: 3.6
-    env: TOXENV=py36-django3-drf3.10
-  - python: 3.6
-    env: TOXENV=py36-django3-drf3.11
-  - python: 3.7
-    env: TOXENV=py37-django2-drf3.8
-  - python: 3.7
-    env: TOXENV=py37-django2-drf3.9
-  - python: 3.7
-    env: TOXENV=py37-django2-drf3.10
-  - python: 3.7
-    env: TOXENV=py37-django2-drf3.11
-  - python: 3.7
-    env: TOXENV=py37-django3-drf3.10
-  - python: 3.7
-    env: TOXENV=py37-django3-drf3.11
+  - python: 3.11
+    env: TOXENV=py311-flake8
+  - python: 3.11
+    env: TOXENV=py311-docs
+  - python: 3.11
+    env: TOXENV=py311-mypy
   - python: 3.8
     env: TOXENV=py38-django2-drf3.8
   - python: 3.8
@@ -65,18 +33,18 @@ jobs:
   - python: 3.9
     env: TOXENV=py39-django3-drf3.10
   - python: 3.9
-    env: TOXENV=py39-django3-drf3.11  
+    env: TOXENV=py39-django3-drf3.11
 install:
 - pip install tox
 script:
 - tox
-deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  username: __token__
-  password:
-    secure: ueyihjnb1ylZ3LHopbdTRaBXpJcObHNu+88rqExWKU2l2G9QeXZp1selJSK5+8rBfp1BguJqPWRmaGKiBcqpLl3kYuh/MEHn78iTZco9A2d1lwRqs4vOSRj3pnaZ19Mm9Nk1ZOxvqKDwj+DIGY3P7i7hlEziu30KKfSbzpherwQsbDDnHdmpfThd+k/RuU7VWxETW+P9Hp3J9fe+zeaGsWNerOH+ImE/97W1G7K73MxZhvjtDNtq7jxSjSrdGTnIvFzGIgfXAvilCEMAT3jvCY8qicprv0/cx8GdQxc8Qe76DWjBzt2KKNZs+x12RcFVpP0yPt/dYQNsnxyeKuvaJHw+56qSKfRTmOi+S6XDneKxTHFOkZtUEWc3ysCNdwTVAJ2ZfmrpUBl/RJ7+6PHIAWuD0CdX1ZzShPiTqpJbi0dhi0mFNzCBGXJr1+i0+YmIeCrm7q4SDG+EyRZPzm+spMAqNYy+JjlZtNHjMQWPEwPB7yZ5CHoWTHgSsozmqw3sjQU1wiKYXqj8RsFgJn3FlDgPV6UeMqkP0Zll2+AxW0kJ1njqDVTpYV/L3TVMK7Q7zr1awqkUcmu8kYWXmufZh16wxKIZ0x1peCOBJ4oKoKpvDIqfX0P0uN4a8IYdnc2mUuTYly5kOzcEvlGLjpSl8gENWGX89zBWqka6U3X5U7o=
-  on:
-    repo: FJNR-inc/dry-rest-permissions
-    tags: true
-    condition: $TOXENV = py38-django2-drf3.8
+# deploy:
+#   provider: pypi
+#   distributions: sdist bdist_wheel
+#   username: __token__
+#   password:
+#     secure: ueyihjnb1ylZ3LHopbdTRaBXpJcObHNu+88rqExWKU2l2G9QeXZp1selJSK5+8rBfp1BguJqPWRmaGKiBcqpLl3kYuh/MEHn78iTZco9A2d1lwRqs4vOSRj3pnaZ19Mm9Nk1ZOxvqKDwj+DIGY3P7i7hlEziu30KKfSbzpherwQsbDDnHdmpfThd+k/RuU7VWxETW+P9Hp3J9fe+zeaGsWNerOH+ImE/97W1G7K73MxZhvjtDNtq7jxSjSrdGTnIvFzGIgfXAvilCEMAT3jvCY8qicprv0/cx8GdQxc8Qe76DWjBzt2KKNZs+x12RcFVpP0yPt/dYQNsnxyeKuvaJHw+56qSKfRTmOi+S6XDneKxTHFOkZtUEWc3ysCNdwTVAJ2ZfmrpUBl/RJ7+6PHIAWuD0CdX1ZzShPiTqpJbi0dhi0mFNzCBGXJr1+i0+YmIeCrm7q4SDG+EyRZPzm+spMAqNYy+JjlZtNHjMQWPEwPB7yZ5CHoWTHgSsozmqw3sjQU1wiKYXqj8RsFgJn3FlDgPV6UeMqkP0Zll2+AxW0kJ1njqDVTpYV/L3TVMK7Q7zr1awqkUcmu8kYWXmufZh16wxKIZ0x1peCOBJ4oKoKpvDIqfX0P0uN4a8IYdnc2mUuTYly5kOzcEvlGLjpSl8gENWGX89zBWqka6U3X5U7o=
+#   on:
+#     repo: FJNR-inc/dry-rest-permissions
+#     tags: true
+#     condition: $TOXENV = py38-django2-drf3.8
