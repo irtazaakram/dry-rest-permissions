@@ -1,71 +1,45 @@
 language: python
 sudo: false
-dist: xenial
+dist: jammy
 jobs:
   fast_finish: true
   include:
-  - python: 3.7
-    env: TOXENV=py37-flake8
-  - python: 3.7
-    env: TOXENV=py37-docs
-  - python: 3.7
-    env: TOXENV=py37-mypy
-  - python: 3.5
-    env: TOXENV=py35-django2-drf3.8
-  - python: 3.5
-    env: TOXENV=py35-django2-drf3.9
-  - python: 3.5
-    env: TOXENV=py35-django2-drf3.10
-  - python: 3.5
-    env: TOXENV=py35-django2-drf3.11
-  - python: 3.6
-    env: TOXENV=py36-django2-drf3.8
-  - python: 3.6
-    env: TOXENV=py36-django2-drf3.9
-  - python: 3.6
-    env: TOXENV=py36-django2-drf3.10
-  - python: 3.6
-    env: TOXENV=py36-django2-drf3.11
-  - python: 3.6
-    env: TOXENV=py36-django3-drf3.10
-  - python: 3.6
-    env: TOXENV=py36-django3-drf3.11
-  - python: 3.7
-    env: TOXENV=py37-django2-drf3.8
-  - python: 3.7
-    env: TOXENV=py37-django2-drf3.9
-  - python: 3.7
-    env: TOXENV=py37-django2-drf3.10
-  - python: 3.7
-    env: TOXENV=py37-django2-drf3.11
-  - python: 3.7
-    env: TOXENV=py37-django3-drf3.10
-  - python: 3.7
-    env: TOXENV=py37-django3-drf3.11
+  - python: 3.11
+    env: TOXENV=py311-flake8
+  - python: 3.11
+    env: TOXENV=py311-docs
+  - python: 3.11
+    env: TOXENV=py311-mypy
   - python: 3.8
-    env: TOXENV=py38-django2-drf3.8
+    env: TOXENV=py38-django32-drf3.13
   - python: 3.8
-    env: TOXENV=py38-django2-drf3.9
+    env: TOXENV=py38-django32-drf3.14
   - python: 3.8
-    env: TOXENV=py38-django2-drf3.10
+    env: TOXENV=py38-django41-drf3.13
   - python: 3.8
-    env: TOXENV=py38-django2-drf3.11
+    env: TOXENV=py38-django41-drf3.14
   - python: 3.8
-    env: TOXENV=py38-django3-drf3.10
-  - python: 3.8
-    env: TOXENV=py38-django3-drf3.11
+    env: TOXENV=py38-django42-drf3.14
   - python: 3.9
-    env: TOXENV=py39-django2-drf3.8
+    env: TOXENV=py39-django32-drf3.13
   - python: 3.9
-    env: TOXENV=py39-django2-drf3.9
+    env: TOXENV=py39-django32-drf3.14
   - python: 3.9
-    env: TOXENV=py39-django2-drf3.10
+    env: TOXENV=py39-django41-drf3.13
   - python: 3.9
-    env: TOXENV=py39-django2-drf3.11
+    env: TOXENV=py39-django41-drf3.14
   - python: 3.9
-    env: TOXENV=py39-django3-drf3.10
-  - python: 3.9
-    env: TOXENV=py39-django3-drf3.11  
+    env: TOXENV=py39-django42-drf3.14
+  - python: 3.10
+    env: TOXENV=py310-django32-drf3.14
+  - python: 3.10
+    env: TOXENV=py310-django41-drf3.14
+  - python: 3.10
+    env: TOXENV=py310-django42-drf3.14
+  - python: 3.11
+    env: TOXENV=py311-django41-drf3.14
+  - python: 3.11
+    env: TOXENV=py311-django42-drf3.14
 install:
 - pip install tox
 script:
@@ -79,4 +53,4 @@ deploy:
   on:
     repo: FJNR-inc/dry-rest-permissions
     tags: true
-    condition: $TOXENV = py38-django2-drf3.8
+    condition: $TOXENV = py311-django42-drf3.14

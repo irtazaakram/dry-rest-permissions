@@ -1,5 +1,13 @@
 # History
 
+## 1.3.0
+* Added support for Python 3.10 & 3.11
+* Added support for Django 4.1 & 4.2
+* Added support for Django-Rest-Framework 3.13 & 3.14
+* Remove support for all Python version < 3.8
+* Remove support for all Django version < 3.2
+* Remove support for all Django-Rest-Framework version < 3.13
+
 ## 1.2.0
 
 * Added type hints
